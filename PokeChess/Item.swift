@@ -1,9 +1,3 @@
-//
-//  Item.swift
-//  PokeChess
-//
-//  Created by Ryan Adams on 12/2/23.
-//
 
 import Foundation
 import SwiftData

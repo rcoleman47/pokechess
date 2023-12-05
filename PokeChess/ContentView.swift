@@ -1,9 +1,3 @@
-//
-//  ContentView.swift
-//  PokeChess
-//
-//  Created by Ryan Adams on 12/2/23.
-//
 
 import SwiftUI
 import SwiftData
