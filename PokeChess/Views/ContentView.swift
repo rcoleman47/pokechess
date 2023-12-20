@@ -6,8 +6,19 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
 
+    @State private var viewModel: PokemonViewModel
+
+    init() {
+        _viewModel = State(initialValue: PokemonViewModel())
+    }
+
     var body: some View {
         NavigationSplitView {
+            List {
+                ForEach(viewModel.pokemon) { pokemon in
+                    Text(pokemon.name)
+                }
+            }
             List {
                 ForEach(items) { item in
                     NavigationLink {
@@ -17,6 +28,9 @@ struct ContentView: View {
                     }
                 }
                 .onDelete(perform: deleteItems)
+            }
+            .onAppear {
+                viewModel.onAppear()
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

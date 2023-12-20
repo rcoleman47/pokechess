@@ -1,10 +1,21 @@
 
 import Foundation
+import SwiftData
 
-struct OfficialArtwork: Decodable {
+@Model
+class OfficialArtwork: Decodable {
     let frontDefault: String
 
-    enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case frontDefault = "front_default"
+    }
+
+    init(frontDefault: String) {
+        self.frontDefault = frontDefault
+    }
+
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        frontDefault = try container.decode(String.self, forKey: .frontDefault)
     }
 }
